@@ -61,7 +61,9 @@ test('the standalone web player migrates and plays legacy choice feedback inline
   const project = messageProject();
   await fs.cp('public/web-player', root, { recursive: true });
   await fs.mkdir(path.join(root, 'game', 'files'), { recursive: true });
-  await fs.cp('public/demo', path.join(root, 'game', 'files', 'demo'), { recursive: true });
+  await fs.cp('public/test-media', path.join(root, 'game', 'files', 'test-media'), {
+    recursive: true,
+  });
   await fs.writeFile(path.join(root, 'game', 'project.json'), JSON.stringify(project));
   const server = await preview({
     configFile: false,

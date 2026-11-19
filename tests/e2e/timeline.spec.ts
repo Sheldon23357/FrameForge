@@ -122,7 +122,7 @@ test('double click edits a multi-clip node with BGM, previews cuts, applies once
   await page.getByRole('button', { name: '播放剪辑预览', exact: true }).click();
   await expect
     .poll(() => page.locator('.timeline-preview-stage video:visible').getAttribute('src'))
-    .toContain('encounter.mp4');
+    .toContain('secondary.mp4');
   await expect(page.locator('.timeline-preview-stage audio')).toHaveJSProperty('paused', false);
   await page.getByRole('button', { name: '暂停剪辑预览', exact: true }).click();
   await expect(page.locator('.timeline-preview-stage audio')).toHaveJSProperty('paused', true);
@@ -209,7 +209,7 @@ test('timeline playback survives hosted web export with music, pauses at choices
   });
   try {
     const game = await context.newPage();
-    await game.route('**/encounter.mp4', async (route) => {
+    await game.route('**/secondary.mp4', async (route) => {
       await incomingVideo;
       await route.continue();
     });
@@ -226,7 +226,7 @@ test('timeline playback survives hosted web export with music, pauses at choices
     await expect(video).toHaveJSProperty('paused', true);
     await expect(audio).toHaveJSProperty('paused', true);
     releaseIncomingVideo();
-    await expect.poll(() => video.getAttribute('src')).toContain('encounter.mp4');
+    await expect.poll(() => video.getAttribute('src')).toContain('secondary.mp4');
     await expect(game.locator('.player-stage audio')).toHaveJSProperty('paused', false);
     await expect
       .poll(() => game.locator('.player-stage audio').evaluate((a: HTMLAudioElement) => a.volume))

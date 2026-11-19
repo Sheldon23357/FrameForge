@@ -74,7 +74,7 @@ test('holds outgoing exit and automatic branch changes and shows ending changes 
   intro.choices[0].targetId = 'scene_branch';
   intro.events.push({
     id: 'exit_feedback',
-    name: '离开森林',
+    name: '退出测试节点',
     trigger: 'exit',
     once: true,
     atMs: 0,
@@ -112,7 +112,7 @@ test('holds outgoing exit and automatic branch changes and shows ending changes 
   await expect(shell).toHaveAttribute('data-node-id', 'scene_consume');
   await expect(changes(page)).toContainText('消耗 测试道具 × 1');
   await expect(changes(page)).toContainText('现有数量 × 0');
-  await expect(page.locator('.player-storyboard')).toContainText('石门缓缓打开');
+  await expect(page.locator('.player-storyboard')).toContainText('测试故事板文字。');
 
   await page.clock.runFor(2150);
   await expect(shell).toHaveAttribute('data-node-id', 'scene_success');
