@@ -180,7 +180,6 @@ test('restores the pending host task at the chosen turn and resumes only its unf
       const editorPath = '/src/store/editor.ts';
       const { agentAPI } = await import(platformPath);
       const { useEditor } = await import(editorPath);
-      const chapterId = useEditor.getState().project.chapters[0].id;
       agentAPI.complete = async (request: {
         purpose?: string;
         messages: { content: string }[];
@@ -203,7 +202,12 @@ test('restores the pending host task at the chosen turn and resumes only its unf
           throw new Error('网关暂时不可用');
         }
         const args = input.startsWith('写完两章')
-          ? { action: 'update', chapterId, patch: {}, designText: '第一章已写。' }
+          ? {
+              action: 'update',
+              chapterId: useEditor.getState().project.chapters[0].id,
+              patch: {},
+              designText: '第一章已写。',
+            }
           : { action: 'create', title: '第二章', designText: '第二章续写。' };
         if (
           input.startsWith('继续') &&

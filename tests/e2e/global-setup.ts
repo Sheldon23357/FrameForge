@@ -24,15 +24,44 @@ export default async function setup() {
       const poster = path.join(root, `${name}.jpg`);
       files.push(clip, poster);
       await run('ffmpeg', [
-        '-v', 'error', '-y', '-f', 'lavfi', '-i', `color=c=${color}:s=960x540:r=12:d=9`,
-        '-c:v', 'libx264', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', clip,
+        '-v',
+        'error',
+        '-y',
+        '-f',
+        'lavfi',
+        '-i',
+        `color=c=${color}:s=960x540:r=12:d=9`,
+        '-c:v',
+        'libx264',
+        '-pix_fmt',
+        'yuv420p',
+        '-movflags',
+        '+faststart',
+        clip,
       ]);
-      await run('ffmpeg', ['-v', 'error', '-y', '-i', clip, '-vf', 'scale=640:360', '-frames:v', '1', poster]);
+      await run('ffmpeg', [
+        '-v',
+        'error',
+        '-y',
+        '-i',
+        clip,
+        '-vf',
+        'scale=640:360',
+        '-frames:v',
+        '1',
+        poster,
+      ]);
     }
     const audio = path.join(root, 'tone.wav');
     files.push(audio);
     await run('ffmpeg', [
-      '-v', 'error', '-y', '-f', 'lavfi', '-i', 'sine=frequency=440:duration=20:sample_rate=24000',
+      '-v',
+      'error',
+      '-y',
+      '-f',
+      'lavfi',
+      '-i',
+      'sine=frequency=440:duration=20:sample_rate=24000',
       audio,
     ]);
     await run(process.execPath, ['scripts/build-web-player.mjs']);

@@ -6,11 +6,14 @@ import type { Project } from '../../packages/domain/schema';
 import { editorTestOrigin } from './server-url';
 
 export async function seedBrowserProject(page: Page, project: Project) {
-  await page.addInitScript(({ origin, value }) => {
-    if (location.origin !== origin || sessionStorage.getItem('test-project-seeded')) return;
-    localStorage.setItem('frameforge.project.v1', JSON.stringify(value));
-    sessionStorage.setItem('test-project-seeded', '1');
-  }, { origin: editorTestOrigin, value: project });
+  await page.addInitScript(
+    ({ origin, value }) => {
+      if (location.origin !== origin || sessionStorage.getItem('test-project-seeded')) return;
+      localStorage.setItem('frameforge.project.v1', JSON.stringify(value));
+      sessionStorage.setItem('test-project-seeded', '1');
+    },
+    { origin: editorTestOrigin, value: project },
+  );
 }
 
 export async function createTestWorkspace() {
@@ -28,11 +31,14 @@ export const testWithWorkspace = base.extend<{ testWorkspace: string; seedProjec
   seedProject: [true, { option: true }],
   page: async ({ page, seedProject }, use) => {
     if (seedProject) {
-      await page.context().addInitScript(({ origin, project }) => {
-        if (location.origin === origin && !localStorage.getItem('frameforge.project.v1')) {
-          localStorage.setItem('frameforge.project.v1', JSON.stringify(project));
-        }
-      }, { origin: editorTestOrigin, project: testProject() });
+      await page.context().addInitScript(
+        ({ origin, project }) => {
+          if (location.origin === origin && !localStorage.getItem('frameforge.project.v1')) {
+            localStorage.setItem('frameforge.project.v1', JSON.stringify(project));
+          }
+        },
+        { origin: editorTestOrigin, project: testProject() },
+      );
     }
     await use(page);
   },

@@ -8,19 +8,19 @@ test.beforeEach(async ({ page }) => {
 test.describe('first launch', () => {
   test.use({ seedProject: false });
   test('opens a blank project and creates another through the menu', async ({ page }) => {
-  await expect(page.getByRole('button', { name: '未命名作品', exact: true })).toBeVisible();
-  await expect(page.locator('.story-node')).toHaveCount(1);
-  await expect(page.locator('.asset-card')).toHaveCount(0);
-  await expect(page.getByRole('navigation', { name: '主导航' })).not.toContainText('新建作品');
-  await expect(page.getByRole('button', { name: '新建作品', exact: true })).toHaveCount(0);
-  await page.locator('.project-menu').click();
-  await page.getByRole('menuitem', { name: '新建作品', exact: true }).click();
-  const dialog = page.getByRole('dialog', { name: '新建作品', exact: true });
-  await dialog.getByRole('textbox').fill('新的互动影游');
-  await dialog.getByRole('button', { name: '创建工程', exact: true }).click();
-  await expect(page.getByRole('button', { name: '新的互动影游', exact: true })).toBeVisible();
-  await expect(page.locator('.story-node')).toHaveCount(1);
-  await expect(page.locator('.asset-card')).toHaveCount(0);
+    await expect(page.getByRole('button', { name: '未命名作品', exact: true })).toBeVisible();
+    await expect(page.locator('.story-node')).toHaveCount(1);
+    await expect(page.locator('.asset-card')).toHaveCount(0);
+    await expect(page.getByRole('navigation', { name: '主导航' })).not.toContainText('新建作品');
+    await expect(page.getByRole('button', { name: '新建作品', exact: true })).toHaveCount(0);
+    await page.locator('.project-menu').click();
+    await page.getByRole('menuitem', { name: '新建作品', exact: true }).click();
+    const dialog = page.getByRole('dialog', { name: '新建作品', exact: true });
+    await dialog.getByRole('textbox').fill('新的互动影游');
+    await dialog.getByRole('button', { name: '创建工程', exact: true }).click();
+    await expect(page.getByRole('button', { name: '新的互动影游', exact: true })).toBeVisible();
+    await expect(page.locator('.story-node')).toHaveCount(1);
+    await expect(page.locator('.asset-card')).toHaveCount(0);
   });
 });
 test('loads a clean blueprint and renders offline video thumbnails', async ({ page }) => {
@@ -133,9 +133,9 @@ test('searches the blueprint and deletes a selected connection without deleting 
   page,
 }) => {
   const search = page.getByRole('textbox', { name: '搜索蓝图节点' });
-  await search.fill('道具');
-  await expect(search).toHaveValue('道具');
-  await expect(page.locator('.react-flow__node.search-dimmed')).toHaveCount(5);
+  await search.fill('条件节点');
+  await expect(search).toHaveValue('条件节点');
+  await expect(page.locator('.react-flow__node.search-dimmed')).toHaveCount(6);
   await search.fill('');
   await search.blur();
   const edge = page.locator('.react-flow__edge').first();
