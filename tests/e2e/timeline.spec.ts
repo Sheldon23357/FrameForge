@@ -222,7 +222,7 @@ test('timeline playback survives hosted web export with music, pauses at choices
     const video = game.locator('.player-stage video:visible');
     const audio = game.locator('.player-stage audio');
     await expect(game.locator('.player-shell')).toHaveAttribute('data-position-ms', '1000');
-    await expect(video).toHaveAttribute('src', /forest\.mp4/);
+    await expect(video).toHaveAttribute('src', /primary\.mp4/);
     await expect(video).toHaveJSProperty('paused', true);
     await expect(audio).toHaveJSProperty('paused', true);
     releaseIncomingVideo();
@@ -252,7 +252,7 @@ test('timeline playback survives hosted web export with music, pauses at choices
     await clickPlayerAction(game, '存读档');
     await game.getByRole('tab', { name: '读档', exact: true }).click();
     await game.getByRole('button', { name: /01 测试开场/ }).click();
-    await expect(video).toHaveAttribute('src', /encounter\.mp4/);
+    await expect(video).toHaveAttribute('src', /secondary\.mp4/);
     await expect(game.locator('.player-stage audio')).toHaveJSProperty('paused', false);
     expect(errors).toEqual([]);
   } finally {
@@ -390,7 +390,7 @@ test('a still sequence keeps dialogue continuous across cuts and pauses at choic
     await audio.evaluate((element) => {
       element.dataset.continuousAudio = 'yes';
     });
-    await expect(still).not.toHaveAttribute('src', /forest\.jpg/);
+    await expect(still).not.toHaveAttribute('src', /primary\.jpg/);
     await expect(audio).toHaveAttribute('data-continuous-audio', 'yes');
     await expect(audio).toHaveJSProperty('paused', false);
     await expect(game.getByRole('button', { name: /进入路线 A/ })).toBeVisible();
@@ -408,7 +408,7 @@ test('discarding a timeline draft leaves the node unchanged', async ({ page }) =
   await page.getByRole('button', { name: '返回蓝图', exact: true }).click();
   await page.getByRole('button', { name: '放弃剪辑', exact: true }).click();
   await expect(page.locator('.story-node.selected .duration')).toHaveText('00:09');
-  await expect(page.locator('.inspector-preview img')).toHaveAttribute('src', /forest\.jpg/);
+  await expect(page.locator('.inspector-preview img')).toHaveAttribute('src', /primary\.jpg/);
 });
 
 test('professional timeline supports pointer trimming, splitting, audio positioning and height preferences', async ({

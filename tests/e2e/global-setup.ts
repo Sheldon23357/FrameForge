@@ -2,6 +2,8 @@ import { execFile } from 'node:child_process';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { promisify } from 'node:util';
+import { createServer, type ViteDevServer } from 'vite';
+import { editorTestPort } from './server-url';
 
 const run = promisify(execFile);
 const colors = {
@@ -14,6 +16,7 @@ export default async function setup() {
   const root = path.resolve('public/test-media');
   await fs.mkdir(root, { recursive: true });
   const files: string[] = [];
+  let server: ViteDevServer | undefined;
   const cleanup = () => Promise.all(files.map((file) => fs.rm(file, { force: true })));
   try {
     for (const [name, color] of Object.entries(colors)) {
@@ -32,11 +35,16 @@ export default async function setup() {
       '-v', 'error', '-y', '-f', 'lavfi', '-i', 'sine=frequency=440:duration=20:sample_rate=24000',
       audio,
     ]);
+    await run(process.execPath, ['scripts/build-web-player.mjs']);
+    server = await createServer({ server: { port: editorTestPort } });
+    await server.listen();
   } catch (error) {
+    await server?.close();
     await cleanup();
     throw error;
   }
   return async () => {
+    await server?.close();
     await cleanup();
     await fs.rmdir(root).catch(() => undefined);
   };

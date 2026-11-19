@@ -240,7 +240,7 @@ test('restores the pending host task at the chosen turn and resumes only its unf
   const completion = page.getByRole('region', { name: '分章节大纲已完成' });
   try {
     await expect(page.getByText('处理中', { exact: true })).toBeVisible();
-    await expect(page.getByText('已提交 1 项编辑', { exact: true })).toBeVisible();
+    await expect(page.getByText('编辑章节', { exact: true })).toBeVisible();
     await expect(completion).toHaveCount(0);
   } finally {
     failChapterGateway();

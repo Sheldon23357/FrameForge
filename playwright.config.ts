@@ -1,4 +1,5 @@
 import { defineConfig } from '@playwright/test';
+import { editorTestOrigin } from './tests/e2e/server-url';
 export default defineConfig({
   testDir: 'tests/e2e',
   testIgnore: '**/echo-*.spec.ts',
@@ -12,13 +13,7 @@ export default defineConfig({
     channel: 'chrome',
     headless: true,
     viewport: { width: 1600, height: 1000 },
-    baseURL: 'http://127.0.0.1:5173',
+    baseURL: editorTestOrigin,
     screenshot: 'only-on-failure',
-  },
-  webServer: {
-    command: 'npm run dev:web',
-    url: 'http://127.0.0.1:5173',
-    reuseExistingServer: true,
-    timeout: 20000,
   },
 });
