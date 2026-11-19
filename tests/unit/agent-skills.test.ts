@@ -70,11 +70,11 @@ it('loads node and image skills before the first planning request', async () => 
 });
 
 beforeEach(async () => {
-  root = await fs.mkdtemp(path.join(os.tmpdir(), 'frameforge-skills-test-'));
+  root = await fs.mkdtemp(path.join(await fs.realpath(os.tmpdir()), 'frameforge-skills-test-'));
 });
 afterEach(async () => {
   if (
-    path.dirname(root) === os.tmpdir() &&
+    path.dirname(root) === (await fs.realpath(os.tmpdir())) &&
     path.basename(root).startsWith('frameforge-skills-test-')
   )
     await fs.rm(root, { recursive: true, force: true });

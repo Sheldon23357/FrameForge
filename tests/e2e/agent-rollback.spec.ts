@@ -227,12 +227,10 @@ test('restores the pending host task at the chosen turn and resumes only its unf
       const { useAgent } = await import(agentPath);
       const { useEditor } = await import(editorPath);
       const checkpoint = useAgent.getState().session?.checkpoint;
+      const project = checkpoint?.draft ?? useEditor.getState().project;
       return {
         task: checkpoint?.hostTask?.id ?? null,
-        texts:
-          useEditor
-            .getState()
-            .project.storyDesign?.chapters.map(({ text }: { text: string }) => text) ?? [],
+        texts: project.storyDesign?.chapters.map(({ text }: { text: string }) => text) ?? [],
       };
     });
   await installModel();
