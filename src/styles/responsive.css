@@ -1,0 +1,189 @@
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (width > 1700px) {
+  .studio-body {
+    --navigation-width: 66px;
+  }
+  .asset-list {
+    gap: 19px;
+  }
+  .canvas-heading {
+    left: 32px;
+    top: 30px;
+  }
+
+  .app-header {
+    height: 69px;
+  }
+}
+@media (max-width: 1250px) {
+  .studio-body {
+    --navigation-width: 54px;
+  }
+  .navigation-rail button {
+    width: 40px;
+  }
+  .navigation-rail button.active:before {
+    left: -6px;
+  }
+  .brand {
+    min-width: 130px;
+  }
+  .brand > div > span {
+    display: none;
+  }
+  .save-indicator > span {
+    display: none;
+  }
+  .header-actions {
+    gap: 7px;
+  }
+
+  .canvas-heading {
+    left: 17px;
+    right: 15px;
+    top: 20px;
+  }
+
+  .canvas-toolbar {
+    gap: 0;
+  }
+  .canvas-toolbar .icon-button {
+    width: 25px;
+  }
+  .data-page,
+  .settings-page {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (max-width: 1050px) {
+  .studio-body {
+    --navigation-width: 50px;
+  }
+  .app-header {
+    padding: 0 12px;
+    gap: 11px;
+  }
+  .brand {
+    min-width: 90px;
+  }
+  .brand strong {
+    font-size: 17px;
+  }
+  .brand-mark {
+    width: 29px;
+    height: 29px;
+  }
+  .history-actions {
+    display: none;
+  }
+  .header-actions > .header-separator {
+    display: none;
+  }
+  .library-panel > .panel-title {
+    padding: 0 13px;
+  }
+  .asset-list {
+    padding: 0 11px;
+  }
+  .segmented {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .import-button {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 10px;
+  }
+
+  .canvas-heading > .button {
+    font-size: 9px;
+  }
+
+  .react-flow__minimap {
+    display: none !important;
+  }
+  .inspector-section {
+    padding: 16px 12px;
+  }
+  .node-notes-panel {
+    padding-inline: 12px;
+  }
+  .inspector-tabs {
+    padding-inline: 12px;
+  }
+  .inspector-node-heading,
+  .inspector-chapter-row {
+    padding-inline: 12px;
+  }
+  .canvas-toolbar .icon-button:last-child {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  .studio {
+    min-width: 640px;
+  }
+  .studio-body {
+    --navigation-width: 44px;
+  }
+  .navigation-rail {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+  .navigation-rail button {
+    width: 39px;
+  }
+  .brand {
+    min-width: 0;
+  }
+  .brand > div {
+    display: none;
+  }
+  .save-indicator {
+    display: none;
+  }
+  .header-actions .preview-button kbd {
+    display: none;
+  }
+  .workspace-topbar {
+    padding: 0 12px;
+  }
+  .canvas-search {
+    display: none;
+  }
+  .data-tabs {
+    gap: 14px;
+  }
+
+  .page-heading h1 {
+    font-size: 22px;
+  }
+  .keyboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .app-statusbar > div:last-child {
+    display: none;
+  }
+  .project-menu {
+    max-width: 150px;
+  }
+  .app-statusbar {
+    font-size: 8px;
+  }
+  .dialog-content {
+    padding: 22px;
+  }
+  .data-page,
+  .settings-page {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}

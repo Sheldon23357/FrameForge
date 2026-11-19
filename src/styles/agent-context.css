@@ -1,0 +1,244 @@
+.agent-context-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(100% + 8px);
+  display: flex;
+  flex-direction: column;
+  max-height: min(360px, calc(100dvh - 210px));
+  color: #c6c6c6;
+  background: #262626;
+  border: 1px solid #484848;
+  border-radius: 10px;
+  box-shadow: 0 12px 28px #0006;
+  z-index: 22;
+  font-size: 11px;
+  line-height: 1.6;
+  overflow: hidden;
+}
+.context-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px 6px 14px;
+  flex-shrink: 0;
+}
+.context-panel-heading strong {
+  font-size: 12px;
+  font-weight: 550;
+  color: #e2e2e2;
+}
+.context-panel-heading .icon-button {
+  width: 23px;
+  height: 23px;
+  color: #959595;
+}
+.context-panel-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 0 14px;
+  border-bottom: 1px solid #3b3b3b;
+  flex-shrink: 0;
+}
+.context-panel-tabs > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 33px;
+  padding: 6px 4px 8px;
+  margin-bottom: -1px;
+  border-bottom: 2px solid transparent;
+  font-size: 11px;
+  color: #969696;
+}
+.context-panel-tabs > button[aria-selected='true'] {
+  border-bottom-color: #d0d0d0;
+  color: #e8e8e8;
+}
+.context-panel-tabs > button > span {
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+  color: #929292;
+}
+.context-panel-body {
+  max-height: 250px;
+  min-height: 72px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: #555 transparent;
+  padding: 11px 14px 14px;
+}
+.context-project-info {
+  margin: 0;
+}
+.context-project-info > div {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  padding: 4px 0;
+}
+.context-project-info dt {
+  color: #929292;
+}
+.context-project-info dd {
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #d3d3d3;
+}
+.context-reference-section {
+  border-top: 1px solid #373737;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+.context-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 25px;
+  gap: 8px;
+  margin-bottom: 5px;
+  color: #929292;
+}
+.context-section-heading h3 {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: #c8c8c8;
+  font-size: 11px;
+  font-weight: 500;
+}
+.context-section-heading h3 > span {
+  font-size: 9px;
+  color: #868686;
+  font-weight: 400;
+}
+.context-pin-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 0 3px 6px;
+  color: #b7b7b7;
+  font-size: 10px;
+  white-space: nowrap;
+}
+.agent-context-chips {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.agent-context-chips > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  padding: 4px 7px;
+  border-radius: 5px;
+  background: #323232;
+  color: #d1d1d1;
+}
+.agent-context-chips > span > span {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.agent-context-chips svg {
+  flex-shrink: 0;
+  color: #969696;
+}
+.agent-context-chips button {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px;
+  color: #a0a0a0;
+}
+.context-memory {
+  margin-top: 11px;
+  border-top: 1px solid #373737;
+  padding-top: 7px;
+}
+.context-memory > summary,
+.context-capability-group > summary {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+  cursor: pointer;
+  min-height: 31px;
+}
+.context-memory > summary::-webkit-details-marker,
+.context-capability-group > summary::-webkit-details-marker {
+  display: none;
+}
+.context-memory > summary > small {
+  margin-left: auto;
+  font-size: 9px;
+  color: #929292;
+}
+.context-memory > summary > svg,
+.context-capability-group > summary > svg {
+  color: #929292;
+  transition: transform 0.12s;
+}
+.context-memory[open] > summary > svg,
+.context-capability-group[open] > summary > svg {
+  transform: rotate(90deg);
+}
+.context-memory p {
+  margin: 7px 0 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 11px;
+  line-height: 1.75;
+  color: #aaa;
+}
+.context-capability-groups {
+  margin: -5px 0 -7px;
+}
+.context-capability-group + .context-capability-group {
+  border-top: 1px solid #343434;
+}
+.context-capability-group > summary {
+  min-height: 33px;
+  gap: 7px;
+  color: #ccc;
+}
+.context-capability-group > summary > small {
+  margin-left: auto;
+  color: #929292;
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.context-capability-group ul {
+  list-style: none;
+  margin: 0 0 8px 19px;
+  padding: 0;
+}
+.context-capability-group li {
+  color: #a0a0a0;
+  padding: 4px 0;
+  font-size: 11px;
+  line-height: 1.6;
+}
+.context-panel-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 14px;
+  border-top: 1px solid #383838;
+  color: #909090;
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}

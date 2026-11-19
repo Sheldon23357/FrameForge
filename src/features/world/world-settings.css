@@ -1,0 +1,168 @@
+.world-settings-layout {
+  display: grid;
+  grid-template-columns: minmax(200px, 280px) minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+}
+.world-setting-detail,
+.world-setting-row {
+  min-width: 0;
+  background: #2a2a2a;
+  border: 1px solid #4f4f4f;
+  border-radius: 6px;
+}
+.world-setting-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  max-height: 58vh;
+  overflow: auto;
+}
+.world-setting-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  text-align: left;
+  color: #ccc;
+}
+.world-setting-row:hover,
+.world-setting-row[aria-current] {
+  background: #303030;
+  border-color: #737373;
+}
+.world-setting-row[aria-current] > svg {
+  color: var(--accent);
+}
+.world-setting-row > svg {
+  flex-shrink: 0;
+}
+.world-setting-row > span {
+  min-width: 0;
+}
+.world-setting-row :is(strong, small) {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.world-setting-row small {
+  color: #aaa;
+  margin-top: 4px;
+}
+.world-setting-detail {
+  padding: clamp(14px, 3vw, 28px);
+  container-type: inline-size;
+}
+.world-setting-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.world-setting-title h2 {
+  margin: 3px 0 0;
+  font-size: 21px;
+  overflow-wrap: anywhere;
+}
+.world-setting-title span,
+.world-setting-image figcaption,
+.world-setting-muted {
+  color: #aaa;
+}
+.world-setting-symbol {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  color: var(--accent);
+  background: #303030;
+  border: 1px solid #484848;
+  border-radius: 8px;
+}
+.world-setting-actions {
+  display: flex;
+  gap: 7px;
+  margin-left: auto;
+}
+.world-setting-image {
+  min-width: 0;
+  width: min(100%, 360px);
+  margin: 10px 0 0;
+}
+.world-setting-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  background: #151515;
+  border-radius: 6px;
+}
+.world-setting-image figcaption {
+  margin-top: 6px;
+  overflow-wrap: anywhere;
+}
+.world-setting-copy {
+  display: grid;
+  gap: 14px;
+  margin: 0;
+}
+.world-setting-copy > div {
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+.world-setting-copy dt {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.world-setting-copy dd {
+  margin: 0;
+}
+.world-setting-copy dd > p {
+  margin: 0;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.world-setting-audio {
+  display: block;
+  margin-top: 10px;
+  width: min(100%, 380px);
+}
+.world-setting-generation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+.world-setting-dialog textarea {
+  resize: vertical;
+}
+.world-setting-references {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+.world-setting-references > div {
+  min-width: 0;
+}
+.world-setting-error {
+  color: #ffb0a6;
+}
+@media (max-width: 760px) {
+  .world-settings-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .world-setting-list {
+    max-height: 220px;
+  }
+}
